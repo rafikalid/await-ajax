@@ -42,6 +42,16 @@ response= await Ajax.postJSON({
 })
 ```
 
+## Alternative
+You can also use `Ajax.call`
+```javascript
+response= await Ajax.call({
+	method: 'GET' or 'POST'
+	url: 'uri'
+	// Other options ...
+});
+```
+
 # Ajax options
 ```javascript
 options= {
@@ -99,4 +109,38 @@ data= response.json()
 
 // Parse reponse HTML and Get meta redirect URL
 response.getMetaRedirectURL()
+```
+
+# Ajax queue
+All active request could be found in `Ajax.all`
+
+## Abort requests from an other code
+```javascript
+// Abort any request that has the identifier: 'request_id'
+Ajax.abort('request_id', 'optional abort message');
+
+// Abort all active requests
+Ajax.abortAll('Optional request message');
+
+// Abort requests using a filter
+Ajax.all.forEach(function(xhr){
+	if(filter(xhr))
+		xhr.abort('Optional abort message');
+});
+```
+
+# Utilities
+
+```javascript
+// Convert formElement or formData to Object
+data= Ajax.formToObject(formElement);
+
+// Convert formElement or formData to JSON
+data= Ajax.formToJSON(formElement);
+
+// Convert formElement or formData to formUrlEncoded
+data= Ajax.formToUrlEncoded(formElement);
+
+// Mimetypes
+Ajax.MIME_TYPES
 ```

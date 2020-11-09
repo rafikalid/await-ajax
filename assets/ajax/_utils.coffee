@@ -30,7 +30,7 @@ _capitalizeSnakeCase= (str, delimeter='-')->
 ###*
  * Convert formData to JSON
 ###
-_convertFormDataToJSON= (formData)->
+_convertFormDataToObject= (formData)->
 	formData= new FormData formData unless formData instanceof FormData
 	result= {}
 	formData.forEach (v,k)->
@@ -50,7 +50,9 @@ _convertFormDataToJSON= (formData)->
 			else
 				res[k]= v
 		return
-	return JSON.stringify result
+	return result
+_convertFormDataToJSON= (formData)->
+	return JSON.stringify _convertFormDataToObject(formData)
 
 ###*
  * Convert formData to URL encoded

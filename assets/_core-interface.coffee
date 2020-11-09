@@ -14,5 +14,8 @@ postJSON:	(options)-> _callAjax options, {method: 'POST', url: null, dataType: '
 ajax:		Ajax
 
 # UTILS
+formToObject:		_convertFormDataToObject
 formToJSON:			_convertFormDataToJSON
 formToUrlEncoded:	_convertFormDataToUrlEncoded
+
+MIME_TYPES:			MIME_TYPES
