@@ -5,18 +5,6 @@ MIME_TYPES=
 	urlencoded	: 'application/x-www-form-urlencoded'
 	text		: 'text/plain'
 	multipart	: 'multipart/form-data'
-# Assign
-_assign= Object.assign
-
-# BaseURL
-_ajaxBaseURL= null
-_getBaseURL= ->
-	unless _ajaxBaseURL
-		try
-			_ajaxBaseURL= document.getElementsByTagName('base')[0].href
-		catch error
-			_ajaxBaseURL= document.location.href
-	return _ajaxBaseURL
 
 # Capitalize
 _capitalizeSnakeCase= (str, delimeter='-')->
@@ -25,7 +13,6 @@ _capitalizeSnakeCase= (str, delimeter='-')->
 			.replace /[\s-_]+(\w)/g, (_, w)-> delimeter + w.toUpperCase()
 		str= str.charAt(0).toUpperCase() + str.substr 1
 	return str
-
 
 ###*
  * Convert formData to JSON

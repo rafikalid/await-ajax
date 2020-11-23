@@ -25,7 +25,7 @@ class response
 	get url(){return this.xhr.responseURL || this.originalURL}
 	get ok(){
 		var status= this.xhr.status;
-		return status >= 200 and status < 300
+		return status >= 200 && status < 300
 	}
 	get type(){
 		var dataType = this.xhr.getResponseHeader('content-type');
