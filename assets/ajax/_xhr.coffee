@@ -45,7 +45,7 @@ _callXHR= (options)->
 		xhr.upload.addEventListener 'progress', options.upload, false if options.upload?
 		xhr.addEventListener 'progress', options.download, false if options.download?
 		# create response object
-		response = new requestResponse xhr, url
+		response = new RequestResponse xhr, url
 		# headers received
 		if options.headersReceived
 			xhr.onreadystatechange= (event)->

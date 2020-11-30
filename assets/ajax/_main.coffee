@@ -5,7 +5,7 @@ XHR_QUEUE= new Set() # store active requests
 #=include _response.coffee
 #=include _xhr.coffee
 # wrapper
-__callAjax= (options, options2)->
+_callAjax= (options, options2)->
 	if (typeof options is 'string') or (options instanceof URL)
 		options2.url= options
 	else if typeof options is 'object' and options?

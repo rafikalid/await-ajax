@@ -1,5 +1,5 @@
 # RESPONSE
-class response
+class RequestResponse
 	constructor: (@xhr, url)->
 		@originalURL= url
 		return
