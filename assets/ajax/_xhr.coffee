@@ -32,8 +32,7 @@ _callXHR= (options)->
 		if vl= options.responseType
 			throw '"responseType" expected string' unless typeof vl is 'string'
 			vl= vl.toLowerCase()
-			options.responseType= vl= MIME_TYPES[vl] or vl
-			if vl is 'application/json'
+			if vl is 'json'
 				promise= promise.then (resp)->
 					throw resp.error unless resp.ok
 					return resp.json()
