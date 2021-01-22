@@ -34,8 +34,9 @@ _callXHR= (options)->
 			vl= vl.toLowerCase()
 			if vl is 'json'
 				promise= promise.then (resp)->
-					throw resp.error unless resp.ok
-					return resp.json()
+					respStatus= xhr.status
+					throw respStatus if respStatus < 200 or respStatus >= 300
+					return xhr.response
 		# prepare XHR
 		xhr= options.xhr or new XMLHttpRequest()
 		xhr.timeout= options.timeout if options.timeout?

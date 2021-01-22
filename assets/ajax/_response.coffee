@@ -15,7 +15,13 @@ class RequestResponse
 						return tag[0].match(/url=([^\s"']+)"?/i)?[1]
 		return null
 	### parse JSON ###
-	json: -> if data= this.xhr.responseText then JSON.parse data else null
+	json: ->
+		try
+			data= @xhr.responseText
+			data= if data then JSON.parse data else null
+		catch error
+			data= @xhr.response
+		return data
 
 	### GETTERS ###
 	```
